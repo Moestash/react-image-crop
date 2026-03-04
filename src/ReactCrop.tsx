@@ -362,6 +362,8 @@ class ReactCrop extends PureComponent<ReactCropProps, ReactCropState> {
   }
 
   onCropPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return
+
     const { crop, disabled } = this.props
     const { width, height } = this.mediaDimensions
     const pixelCrop = convertToPixelCrop(crop, width, height)
@@ -407,6 +409,8 @@ class ReactCrop extends PureComponent<ReactCropProps, ReactCropState> {
   }
 
   onComponentPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    
     const { crop, disabled, locked, keepSelection, onChange, zoom = 1, spin = 0 } = this.props
 
     const componentEl = (this.mediaWrapperRef.current as HTMLDivElement).firstChild
